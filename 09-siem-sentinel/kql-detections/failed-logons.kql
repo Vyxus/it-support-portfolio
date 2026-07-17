@@ -1,0 +1,8 @@
+// Detection: Failed logon attempts (EventID 4625), bucketed per 15 minutes, per computer.
+// Data source: SecurityEvent table, populated via Azure Monitor Agent from Arc-connected
+// Windows servers (DC01, DC02, FILESRV01).
+
+SecurityEvent
+| where EventID == 4625
+| summarize FailedLogons = count() by bin(TimeGenerated, 15m), Computer
+| render timechart

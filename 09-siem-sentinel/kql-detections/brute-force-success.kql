@@ -1,0 +1,14 @@
+// Detection: Brute-force pattern followed by a successful logon.
+// Flags accounts with 5+ failed logon attempts (4625) AND at least one
+// successful logon (4624) in the lookback window — a classic signal of
+// a successful password-guessing/brute-force attempt, not just noise.
+//
+// Note: captured from Advanced Hunting in the Defender portal; the full
+// "by" clause (Account + additional grouping fields) was cut off mid-edit
+// in the source screenshot — reconstruct/extend the summarize clause with
+// Account and Computer as needed before using this as a live detection rule.
+
+SecurityEvent
+| where EventID in (4625, 4624)
+| summarize FailedCount = countif(EventID == 4625), SuccessCount = countif(EventID == 4624) by Account, Computer
+| where FailedCount >= 5 and SuccessCount >= 1
