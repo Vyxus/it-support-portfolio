@@ -1,6 +1,6 @@
 # HelpDeskLab — IT Support & Infrastructure Portfolio
 
-**Akram El Asouly** — IT Support Professional · Rabat, Morocco
+**Akram El Asouly** — IT Support Professional · Agadir, Morocco
 📧 [AkramEIAsouly@proton.me](mailto:AkramEIAsouly@proton.me) &nbsp;|&nbsp; 🎓 Google IT Support Professional Certificate
 
 ![Active Directory](https://img.shields.io/badge/Active_Directory-0E1E2F?style=flat-square) ![pfSense](https://img.shields.io/badge/pfSense-24405F?style=flat-square) ![Windows Server](https://img.shields.io/badge/Windows_Server-24405F?style=flat-square) ![Linux](https://img.shields.io/badge/Linux%20%2F%20Ubuntu-00C2A8?style=flat-square) ![Azure](https://img.shields.io/badge/Azure_Arc_%2F_Sentinel-0E1E2F?style=flat-square) ![Networking](https://img.shields.io/badge/Networking%20%2F%20TCP--IP-24405F?style=flat-square)
