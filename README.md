@@ -73,7 +73,7 @@ Roundcube threw *"Internal error occurred"* loading the inbox, even though Postf
 
 ## Notes on scope
 
-Two originally-planned modules — VLAN segmentation and scripted endpoint hardening — were deliberately scoped out due to time, in favor of finishing the seven services above to a high standard rather than spreading thinner across nine. Everything listed in the table was fully built, tested, and documented.
+Two originally-planned modules, VLAN segmentation and scripted endpoint hardening; were deliberately scoped out due to time, in favor of finishing the seven services above to a high standard rather than spreading thinner across nine. Everything listed in the table was fully built, tested, and documented.
 
 ## About this lab
 
