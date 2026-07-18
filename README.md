@@ -81,4 +81,4 @@ Built solo, VM-to-VM, using VirtualBox for every server. The goal was to reprodu
 
 ---
 
-📧 **[AkramEIAsouly@proton.me](mailto:AkramEIAsouly@proton.me)** · Rabat, Morocco · Open to IT Support / Junior Sysadmin roles
+📧 **[AkramEIAsouly@proton.me](mailto:AkramEIAsouly@proton.me)** · Morocco · Open to IT Support Specialist / Junior Sysadmin / Helpdesk Technician roles
