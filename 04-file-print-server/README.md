@@ -11,6 +11,12 @@ Centralizing file storage and print services off the domain controllers, with pr
 - FSRM installed with 5GB soft quotas configured on both shares
 - A shared printer deployed via GPO, confirmed appearing automatically on clients after policy refresh
 
+## Lab Context
+- **Server role/name:** FILESRV01
+- **Directory dependency:** Domain-joined to `helpdesklab.local`
+- **Workload split:** Department shares + print services moved off domain controllers
+- **Policy dependency:** Existing drive-map and printer deployment GPOs updated to new host paths
+
 ## How It Works
 ![FILESRV01 File Server role](./screenshots/FILESRV01%20joined%20+%20File%20Server%20role.png)
 ![Sales and IT shares](./screenshots/Sales%20and%20IT%20shares.png)
@@ -21,6 +27,12 @@ Centralizing file storage and print services off the domain controllers, with pr
 - **FILESRV01 couldn't join the domain** ("AD DC could not be contacted") — root cause: DNS was pointing at stale IPv6 site-local placeholder addresses instead of the real domain controllers. Fixed by explicitly setting the DNS client server addresses to the real DC IPs.
 - **FSRM's quota creation dialog showed no shares to select** — the shares had never actually been created on FILESRV01 yet, a migration step that had been skipped. Created them fresh with correct NTFS permissions, then retried FSRM successfully.
 - **Group Policy Management Console wasn't available from FILESRV01** — GPMC only ships with AD DS tools on domain controllers by default; corrected by running policy changes from DC01 instead.
+
+## Validation Performed
+- Verified domain join and role installation on FILESRV01
+- Verified share access behavior remained aligned to department group permissions
+- Verified updated mapped-drive paths resolved to FILESRV01
+- Verified FSRM quotas and GPO printer auto-deployment behavior on clients
 
 ## What I'd Do Differently / Next Steps
 - Add DFS namespaces if this environment grows to multiple file servers

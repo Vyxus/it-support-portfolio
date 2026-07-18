@@ -15,6 +15,12 @@ Simulates a small business standing up its first domain: centralized identity, d
   - **Block-USB-Storage** — denies removable storage access
 - NTFS permissions locked down on department shares, tested and confirmed
 
+## Lab Context
+- **Domain:** `helpdesklab.local`
+- **Primary infra node:** DC01 (AD DS + DNS + DHCP)
+- **Client under test:** CLIENT01
+- **Access model:** OU + security-group-based authorization per department
+
 ## How It Works
 ![Domain in ADUC](./screenshots/Active%20Directory%20Users%20and%20Computers%20showing%20the%20domain.png)
 ![CLIENT01 domain-joined](./screenshots/CLIENT01%20successfully%20domain-joined.png)
@@ -29,6 +35,12 @@ Permission testing: `jsmith` (Sales) is correctly denied access to the IT share,
 ## Challenges & Troubleshooting
 - **CLIENT01's first local account came out as a standard user, not an admin.** Root cause: VirtualBox's "Proceed with Unattended Installation" option auto-provisions a local account that isn't reliably added to `BUILTIN\Administrators`. Fixed by disabling unattended installation and going through interactive OOBE manually, then verifying group membership with `whoami /groups | findstr "S-1-5-32-544"` immediately after first login.
 - Domain join failed repeatedly until the underlying local-admin issue above was identified and fixed — the join dialog's generic error masked what was actually a local privilege problem, not a networking or domain-trust issue.
+
+## Validation Performed
+- Verified CLIENT01 domain join in system properties and ADUC
+- Verified GPO presence and link scope in GPMC
+- Verified permission boundaries (`jsmith` denied IT share, allowed Sales share)
+- Verified DHCP and DNS service health on DC01 during join and policy operations
 
 ## What I'd Do Differently / Next Steps
 - Script user/group/OU creation with a PowerShell provisioning tool rather than doing it by hand (see the mail-server and file-server projects for a similar automation mindset applied elsewhere)

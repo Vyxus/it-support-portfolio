@@ -35,6 +35,59 @@ Everything sits on one lab network, behind one firewall:
 
 pfSense is the edge every other server sits behind on `192.168.50.0/24`. DC01, DC02, and FILESRV01 are additionally onboarded to Azure via Arc, feeding a Log Analytics workspace that Microsoft Sentinel monitors.
 
+## Cisco Packet Tracer-style topology
+
+```mermaid
+flowchart LR
+    Internet((Internet))
+    pfSense[pfSense Firewall/Router\nWAN + LAN]
+    SW[(LAN Switch\n192.168.50.0/24)]
+
+    DC01[DC01\nAD DS + DNS + DHCP]
+    DC02[DC02\nAD DS + DNS + DHCP]
+    FILESRV01[FILESRV01\nFile + Print]
+    TICKET01[TICKET01\nosTicket (LAMP)]
+    MAIL01[MAIL01\nPostfix/Dovecot/Roundcube]
+    CLIENT01[CLIENT01\nDomain-Joined Workstation]
+
+    Arc[Azure Arc]
+    LA[Log Analytics]
+    Sentinel[Microsoft Sentinel]
+
+    Internet --> pfSense
+    pfSense --> SW
+
+    SW --> DC01
+    SW --> DC02
+    SW --> FILESRV01
+    SW --> TICKET01
+    SW --> MAIL01
+    SW --> CLIENT01
+
+    DC01 --> Arc
+    DC02 --> Arc
+    FILESRV01 --> Arc
+    Arc --> LA --> Sentinel
+```
+
+## Lab environment at a glance
+
+| Layer | Components |
+|---|---|
+| Virtualization | VirtualBox-hosted multi-VM lab |
+| Edge/network | pfSense dual-interface edge (`WAN` + `LAN`) |
+| Identity core | DC01 + DC02 (AD DS, DNS, DHCP failover) |
+| Business services | FILESRV01 (shares/print), TICKET01 (osTicket), MAIL01 (Postfix/Dovecot/Roundcube) |
+| Security monitoring | Azure Arc + Log Analytics + Microsoft Sentinel |
+| Internal subnet | `192.168.50.0/24` |
+
+## How to read this portfolio
+
+- Start with the **Projects** table for a quick capability map.
+- Open each module folder for implementation detail and screenshots.
+- Use each module's **Challenges & Troubleshooting** section to see real diagnostic workflow.
+- For security monitoring specifics, use `09-siem-sentinel/kql-detections` for detection logic.
+
 ## Projects
 
 | # | Project | What it demonstrates | The debug |

@@ -13,6 +13,11 @@ A single domain controller is a single point of failure. This project adds redun
 - DC01 brought back online with replication forced and verified clean
 - `MaxClientLeadTime` tuned from the 1-hour default down to 5 minutes for faster failover pickup
 
+## Lab Context
+- **High-availability pair:** DC01 + DC02
+- **Core services covered:** AD DS replication, DNS continuity, DHCP failover
+- **Failure model tested:** planned full outage of DC01 with live client validation through DC02
+
 ## How It Works
 ![DC02 promoted](./screenshots/DC02%20promoted.png)
 ![DHCP failover configuration](./screenshots/DHCP%20failover%20configuration.png)
@@ -28,6 +33,12 @@ This was the single most involved debugging chain in the whole lab. DC01 was ori
 4. **The AD computer object still showed the old name** even after the Windows-level rename succeeded — fixed via `Rename-ADObject` and `Set-ADComputer -DNSHostName`.
 5. **DHCP failover worked for leases but clients still got stuck on stale/APIPA addresses after DC01 went down** — the DHCP scope's DNS option only listed DC01, with no DC02 fallback. Fixed by explicitly setting both DNS servers in the scope option.
 6. **A GPO was accidentally scoped to the domain root**, silently applying a 10-minute inactivity lockout to the domain controllers themselves. Fixed by unlinking it from the domain root and re-linking only to the intended OUs.
+
+## Validation Performed
+- Confirmed healthy replication state after DC02 promotion and after DC01 recovery
+- Confirmed new DHCP leases could be issued while DC01 was powered off
+- Confirmed DNS resolution and domain authentication remained functional during the outage
+- Confirmed post-recovery synchronization returned environment to steady state
 
 ## What I'd Do Differently / Next Steps
 - Practice FSMO role seizure/transfer as a follow-up exercise
