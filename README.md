@@ -1,19 +1,19 @@
-# HelpDeskLab — IT Support & Infrastructure Portfolio
+# HelpDeskLab / IT Support & Infrastructure Portfolio
 
-**Akram El Asouly** — IT Support Professional · Agadir, Morocco
+**Akram El Asouly**  IT Support Professional · Agadir, Morocco
 📧 [AkramEIAsouly@proton.me](mailto:AkramEIAsouly@proton.me) &nbsp;|&nbsp; 🎓 Google IT Support Professional Certificate
 
 ![Active Directory](https://img.shields.io/badge/Active_Directory-0E1E2F?style=flat-square) ![pfSense](https://img.shields.io/badge/pfSense-24405F?style=flat-square) ![Windows Server](https://img.shields.io/badge/Windows_Server-24405F?style=flat-square) ![Linux](https://img.shields.io/badge/Linux%20%2F%20Ubuntu-00C2A8?style=flat-square) ![Azure](https://img.shields.io/badge/Azure_Arc_%2F_Sentinel-0E1E2F?style=flat-square) ![Networking](https://img.shields.io/badge/Networking%20%2F%20TCP--IP-24405F?style=flat-square)
 
-A self-built, multi-server IT infrastructure lab simulating a real small-business / MSP client environment — built end-to-end in VirtualBox: network edge, Active Directory with high availability, file/print services, a ticketing system, a mail server, and a live SIEM with hybrid cloud management via Azure Arc.
+A self-built, multi-server IT infrastructure lab simulating a real small-business / MSP client environment. Built end-to-end in VirtualBox: network edge, Active Directory with high availability, file/print services, a ticketing system, a mail server, and a live SIEM with hybrid cloud management via Azure Arc.
 
-Every project below includes real screenshots, configuration details, and an honest account of what broke and how it was diagnosed — not just a clean happy-path walkthrough. That diagnostic process, more than any single service, is the point of this repo.
+Every project below includes real screenshots, configuration details, and an honest account of what broke and how it was diagnosed. Not just a clean happy-path walkthrough. That diagnostic process, more than any single service, is the point of this repo.
 
 ---
 
 ## About me
 
-I hold the **Google IT Support Professional Certificate** and am based in **Rabat, Morocco**, currently looking for IT Support / Junior Sysadmin roles. I built HelpDeskLab to go beyond scripted tutorials: seven services that actually depend on each other on one network, with the kind of subtle, multi-layered failures a real environment produces — traced to root cause with logs and debug output rather than guesswork.
+I hold the **Google IT Support Professional Certificate** and am based in **Rabat, Morocco**, currently looking for IT Support / Junior Sysadmin roles. I built HelpDeskLab to go beyond scripted tutorials: seven services that actually depend on each other on one network, with the kind of subtle, multi-layered failures a real environment produces. Traced to root cause with logs and debug output rather than guesswork.
 
 Reach me at **[AkramEIAsouly@proton.me](mailto:AkramEIAsouly@proton.me)**.
 
