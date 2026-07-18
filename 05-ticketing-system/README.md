@@ -10,6 +10,12 @@ A helpdesk needs a way to intake, track, and resolve support requests rather tha
 - A staff/agent account created
 - Full ticket lifecycle proven: public submission → staff reply → status update
 
+## Lab Context
+- **Server role/name:** TICKET01 (Ubuntu Server)
+- **Application stack:** Apache + MySQL + PHP + osTicket
+- **Operational goal:** Replace ad hoc support handling with structured intake and response workflow
+- **Integration point:** Candidate future AD/LDAP authentication for staff accounts
+
 ## How It Works
 ![osTicket dashboard/login](./screenshots/osTicket%20installed,%20dashboardlogin.png)
 ![A submitted ticket](./screenshots/A%20submitted%20ticket%20(public-facing).png)
@@ -17,6 +23,12 @@ A helpdesk needs a way to intake, track, and resolve support requests rather tha
 
 ## Challenges & Troubleshooting
 - **The osTicket web installer returned HTTP 500 on the database step.** Root cause: an earlier `ALTER USER` attempt had been silently rejected by MySQL's `validate_password` policy, meaning the password never actually changed — so the installer was authenticating with a password that had never actually been set. Fixed by choosing a password that satisfied the complexity policy and confirming it worked with a direct CLI login test before retrying the web form. This was a good reminder not to assume a command succeeded just because it didn't loudly error at the time.
+
+## Validation Performed
+- Verified installer completion and successful admin/staff login
+- Verified ticket lifecycle from public submission through agent response
+- Verified database authentication at CLI before using installer inputs
+- Verified department/help-topic routing appears correctly in ticket forms
 
 ## What I'd Do Differently / Next Steps
 - Integrate osTicket against Active Directory for staff login (LDAP auth), rather than a local-only account
