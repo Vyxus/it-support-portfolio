@@ -20,8 +20,6 @@ Reach me at **[AkramEIAsouly@proton.me](mailto:AkramEIAsouly@proton.me)**.
 ## Quick look
 
 <table>
-
-<table>
 <tr>
 <td><img src="images/hero-pfsense.png" width="280"/><br/><sub>pfSense edge dashboard</sub></td>
 <td><img src="images/hero-killtest.png" width="280"/><br/><sub>Domain controller failover test</sub></td>
