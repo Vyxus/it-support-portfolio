@@ -33,8 +33,6 @@ The lab is built around one simple idea: an environment should behave like a sma
 
 ### Architecture overview
 
-![Architecture diagram](images/architecture-diagram.png)
-
 Everything sits on one lab network, behind one firewall:
 
 ![Architecture diagram](images/architecture-diagram.png)
